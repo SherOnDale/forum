@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
 import routes from './routes/contact.route';
 
 const app = express();
@@ -13,8 +12,8 @@ mongoose.connect('mongodb://localhost/mlvdb', {
 });
 
 // bodyparser setup
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 //initializing app
 routes(app);
