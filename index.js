@@ -1,12 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import helmet from 'helmet';
 import routes from './routes/contact.route';
 
 const app = express();
 const PORT = 3000;
 
 // mongoose connection
-mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/mlvdb', {
   useMongoClient: true
 });
@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/mlvdb', {
 // bodyparser setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(helmet());
 
 //initializing app
 routes(app);
